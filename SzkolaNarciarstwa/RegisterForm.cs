@@ -20,8 +20,12 @@ namespace SzkolaNarciarstwa
             btnSubmit.Click += BtnSubmit_Click;
             btnBack.Click += BtnBack_Click;
         }
-
-        private void BtnSubmit_Click(object sender, EventArgs e)
+        public TextBox TxtUsername => txtUsername;
+        public TextBox TxtPassword1 => txtPassword1;
+        public TextBox TxtPassword2 => txtPassword2;
+        public TextBox TxtEmail => txtEmail;
+        public Button BtnSubmit => btnSubmit;
+        public void BtnSubmit_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password1 = txtPassword1.Text;
