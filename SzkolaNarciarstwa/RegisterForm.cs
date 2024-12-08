@@ -20,7 +20,7 @@ namespace SzkolaNarciarstwa
             btnSubmit.Click += BtnSubmit_Click;
             btnBack.Click += BtnBack_Click;
         }
-        public TextBox TxtUsername => txtUsername;
+        public TextBox TxtUsername => txtUsername;    /* Dla testów zmienne */
         public TextBox TxtPassword1 => txtPassword1;
         public TextBox TxtPassword2 => txtPassword2;
         public TextBox TxtEmail => txtEmail;
