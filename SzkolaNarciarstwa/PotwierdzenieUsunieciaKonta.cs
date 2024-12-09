@@ -1,9 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Text;
 using MySql.Data.MySqlClient;
-using System.Text;
 using System.Security.Cryptography;
 
 namespace SzkolaNarciarstwa
@@ -20,10 +16,11 @@ namespace SzkolaNarciarstwa
             InitializeComponent();
             
             this.loginForm = loginForm;
-
+            btnPotwierdz.Click += BtnPotwierdz_Click;
         }
-
-
+                       /* Dla testów zmienne */
+        public TextBox TxtPassword => txtHaslo;
+        public Button BtnPotwierdz => btnPotwierdz;
         private void UsunKonto(MySqlConnection connection)
         {
 
@@ -55,7 +52,7 @@ namespace SzkolaNarciarstwa
             this.Close();
         }
 
-        private void btnPotwierdz_Click(object sender, EventArgs e)
+        public void BtnPotwierdz_Click(object sender, EventArgs e)
         {
             {
                 string wprowadzoneHaslo = txtHaslo.Text.Trim();

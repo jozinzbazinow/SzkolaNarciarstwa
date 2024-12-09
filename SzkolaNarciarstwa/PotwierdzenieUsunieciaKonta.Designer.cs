@@ -73,7 +73,7 @@
             btnPotwierdz.TabIndex = 3;
             btnPotwierdz.Text = "Potwierdź usunięcie konta";
             btnPotwierdz.UseVisualStyleBackColor = false;
-            btnPotwierdz.Click += btnPotwierdz_Click;
+            btnPotwierdz.Click += BtnPotwierdz_Click;
             // 
             // panel2
             // 

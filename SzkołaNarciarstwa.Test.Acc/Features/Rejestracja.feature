@@ -1,8 +1,7 @@
 ﻿   Feature: User Registration
-     As a user
-     I want to register an account
-     So that I can log in later
-
+     Jako uzytkownik chce zalozyc konto
+     aby potem sie zalogowac
+@tag1
    Scenario: Successful Registration
      Given I am on the registration page
      When I fill in valid registration details

@@ -25,14 +25,15 @@ namespace SzkolaNarciarstwa
                 this.stronaGlowna = mainForm; // Przypisz referencję do StronaGlowna
             }
 
-
-
             // Podłącz zdarzenia przycisków
             btnSubmit.Click += BtnSubmit_Click;
             btnBack.Click += BtnBack_Click;
         }
 
-        private void BtnSubmit_Click(object sender, EventArgs e)
+        public TextBox TxtUsernameL => txtUsername;    /* Dla testów zmienne */
+        public TextBox TxtPasswordL => txtPassword;
+        public Button BtnSubmit => btnSubmit;
+        public void BtnSubmit_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;

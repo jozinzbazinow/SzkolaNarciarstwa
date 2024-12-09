@@ -1,5 +1,4 @@
-using System;
-using SzkolaNarciarstwa;
+
 using System.Windows.Forms;
 using NUnit.Framework;
 using TechTalk.SpecFlow;

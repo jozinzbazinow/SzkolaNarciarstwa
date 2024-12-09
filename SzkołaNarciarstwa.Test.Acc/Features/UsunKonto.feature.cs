@@ -20,22 +20,22 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("User Registration")]
-    public partial class UserRegistrationFeature
+    [NUnit.Framework.DescriptionAttribute("UsunKonto")]
+    public partial class UsunKontoFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Rejestracja.feature"
+#line 1 "UsunKonto.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "User Registration", "     Jako uzytkownik chce zalozyc konto\r\n     aby potem sie zalogowac", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "UsunKonto", "Jako użytkownik chcę usunąć konto uczen", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,16 +74,16 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Successful Registration")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        public void SuccessfulRegistration()
+        [NUnit.Framework.DescriptionAttribute("Usuniecie Konta Ucznia")]
+        [NUnit.Framework.CategoryAttribute("tag3")]
+        public void UsuniecieKontaUcznia()
         {
             string[] tagsOfScenario = new string[] {
-                    "tag1"};
+                    "tag3"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Registration", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 5
-   this.ScenarioInitialize(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Usuniecie Konta Ucznia", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 6
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -92,17 +92,14 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
             else
             {
                 this.ScenarioStart();
-#line 6
-     testRunner.Given("I am on the registration page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 7
-     testRunner.When("I fill in valid registration details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("Zalogowany jako uczen oraz w panelu potwierdzenie usuniecia konta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-     testRunner.And("I click the \"Register\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Potwierdzam haslo przyciskiem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-     testRunner.Then("I should see a success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("udalo mi sie usunac konto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
