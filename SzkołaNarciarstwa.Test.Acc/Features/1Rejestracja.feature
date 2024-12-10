@@ -1,4 +1,4 @@
-﻿   Feature: User Registration
+﻿   Feature: 1Rejestracja
      Jako uzytkownik chce zalozyc konto
      aby potem sie zalogowac
 @tag1

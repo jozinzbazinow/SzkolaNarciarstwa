@@ -28,7 +28,7 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Rejestracja.feature"
+#line 1 "1Rejestracja.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]

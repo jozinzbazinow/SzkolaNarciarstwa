@@ -1,4 +1,4 @@
-﻿Feature: UsunKonto
+﻿Feature: 3UsunKonto
 
 Jako użytkownik chcę usunąć konto uczen
 
