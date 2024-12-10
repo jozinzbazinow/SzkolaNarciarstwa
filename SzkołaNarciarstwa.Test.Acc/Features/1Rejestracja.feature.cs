@@ -20,8 +20,8 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("User Registration")]
-    public partial class UserRegistrationFeature
+    [NUnit.Framework.DescriptionAttribute("1Rejestracja")]
+    public partial class _1RejestracjaFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace SzkolaNarciarstwa.Test.Acc.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "User Registration", "     Jako uzytkownik chce zalozyc konto\r\n     aby potem sie zalogowac", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "1Rejestracja", "     Jako uzytkownik chce zalozyc konto\r\n     aby potem sie zalogowac", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         

@@ -74,7 +74,7 @@ namespace SzkolaNarciarstwa
                     {
                         2 => "SELECT IDPracownik, IDStanowisko FROM pracownicy WHERE Login = @username AND Haslo = @password",
                         1 => "SELECT IDkursanci FROM kursanci WHERE Login = @username AND Haslo = @password",
-                        _ => null // Obsługa błędów
+                        //_ => null // Obsługa błędów #niepotrzebne, błąd będzie i tak
 
                     };
 
