@@ -9,7 +9,7 @@ namespace SzkolaNarciarstwa
     {
 
         private PanelUzytkownika panelUzytkownika;
-        private string connectionString = "server=localhost;database=szkola;uid=root;"; // Ustaw swoje dane połączenia
+        private string connectionString = "server=localhost;database=szkola;uid=root;"; // Ustaw swoje dane połączenia z BD
 
         public EdytujOferte(PanelUzytkownika panelUzytkownika)
         {
