@@ -10,26 +10,27 @@ namespace SzkolaNarciarstwa.Test.Acc.StepDefinitions
     {
         private Form mainForm;
         private LoginForm loginForm;
-        private PanelUzytkownika panelUzytkownika;
 
         [Given("Jestem na stronie logowania")]
         public void GivenJestemNaStronieLogowania()
         {
             mainForm = new Form();
             loginForm = new LoginForm(mainForm, 1);
-            panelUzytkownika = new PanelUzytkownika(mainForm);
             loginForm.Show();
         }
 
         [When("Wypelnie poprawnie formularz")]
         public void WhenWypelniePoprawnieFormularz()
         {
-            loginForm.TxtUsernameL.Text = "testuser";
-            loginForm.TxtPasswordL.Text = "password123";
-        }
+            try
+            {
+                loginForm.TxtUsername.Text += "testuser";
+                loginForm.TxtPassword.Text += "password123";
+            }
+         }
 
         [When("Nacisne przycisk \"([^\"]*)\" sie")]
-        public void WhenNacisnePrzyciskZalogujSie(string buttonName)
+        public void WhenNacisnePrzyciskZalogujSie(string buttonName) //Error drag and drop, nie zmienia nic 
         {
             if (buttonName == "zaloguj")
             {
@@ -40,7 +41,7 @@ namespace SzkolaNarciarstwa.Test.Acc.StepDefinitions
         [Then("Udalo mi sie zalogowac")]
         public void ThenUdaloMiSieZalogowac()
         {
-            Assert.That(panelUzytkownika.Visible == false, "Logowanie nie powiod³o siê");
+            Assert.That(loginForm.Visible == false, "Logowanie nie powiod³o siê");
         }
     }
 }

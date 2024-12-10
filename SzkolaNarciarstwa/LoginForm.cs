@@ -30,8 +30,8 @@ namespace SzkolaNarciarstwa
             btnBack.Click += BtnBack_Click;
         }
 
-        public TextBox TxtUsernameL => txtUsername;    /* Dla testów zmienne */
-        public TextBox TxtPasswordL => txtPassword;
+        public TextBox TxtUsername => txtUsername;    /* Dla testów zmienne */
+        public TextBox TxtPassword => txtPassword;
         public Button BtnSubmit => btnSubmit;
         public void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -74,7 +74,7 @@ namespace SzkolaNarciarstwa
                     {
                         2 => "SELECT IDPracownik, IDStanowisko FROM pracownicy WHERE Login = @username AND Haslo = @password",
                         1 => "SELECT IDkursanci FROM kursanci WHERE Login = @username AND Haslo = @password",
-                        //_ => null // Obsługa błędów #niepotrzebne, błąd będzie i tak
+                        _ => "" // Obsługa błędów #niepotrzebne, błąd będzie i tak
 
                     };
 

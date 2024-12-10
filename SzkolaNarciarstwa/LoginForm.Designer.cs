@@ -115,7 +115,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(55, 54, 74);
             BackgroundImageLayout = ImageLayout.None;
-            CancelButton = btnSubmit;
+            CancelButton = btnBack;
             ClientSize = new Size(464, 234);
             Controls.Add(lblUsername);
             Controls.Add(txtUsername);
