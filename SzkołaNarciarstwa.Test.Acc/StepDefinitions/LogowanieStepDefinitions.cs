@@ -33,7 +33,7 @@ namespace SzkolaNarciarstwa.Test.Acc.StepDefinitions
         {
             if (buttonName == "zaloguj")
             {
-                loginForm.BtnSubmit_Click(null, null); //Wywo³anie Submit
+                loginForm.BtnSubmit_Click(null, null); //Wywo³anie Submit ktore nie dziala
             }
         }
 
