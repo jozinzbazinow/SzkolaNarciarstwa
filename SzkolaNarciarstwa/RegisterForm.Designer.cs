@@ -39,54 +39,48 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(180, 62);
-            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Location = new Point(198, 45);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(200, 27);
+            txtUsername.Size = new Size(176, 23);
             txtUsername.TabIndex = 1;
             // 
             // txtPassword1
             // 
-            txtPassword1.Location = new Point(180, 188);
-            txtPassword1.Margin = new Padding(3, 4, 3, 4);
+            txtPassword1.Location = new Point(198, 140);
             txtPassword1.Name = "txtPassword1";
             txtPassword1.PasswordChar = '*';
-            txtPassword1.Size = new Size(200, 27);
+            txtPassword1.Size = new Size(176, 23);
             txtPassword1.TabIndex = 5;
             // 
             // txtPassword2
             // 
-            txtPassword2.Location = new Point(180, 225);
-            txtPassword2.Margin = new Padding(3, 4, 3, 4);
+            txtPassword2.Location = new Point(198, 168);
             txtPassword2.Name = "txtPassword2";
             txtPassword2.PasswordChar = '*';
-            txtPassword2.Size = new Size(200, 27);
+            txtPassword2.Size = new Size(176, 23);
             txtPassword2.TabIndex = 6;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(180, 125);
-            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Location = new Point(198, 93);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(200, 27);
+            txtEmail.Size = new Size(176, 23);
             txtEmail.TabIndex = 3;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(180, 280);
-            btnSubmit.Margin = new Padding(3, 4, 3, 4);
+            btnSubmit.Location = new Point(198, 209);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(100, 50);
+            btnSubmit.Size = new Size(88, 38);
             btnSubmit.TabIndex = 7;
             btnSubmit.Text = "Załóż konto";
             btnSubmit.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(290, 280);
-            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Location = new Point(294, 209);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(90, 50);
+            btnBack.Size = new Size(79, 38);
             btnBack.TabIndex = 8;
             btnBack.Text = "Wróć";
             btnBack.UseVisualStyleBackColor = true;
@@ -94,45 +88,45 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(50, 62);
+            lblUsername.Location = new Point(84, 45);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(142, 20);
+            lblUsername.Size = new Size(114, 15);
             lblUsername.TabIndex = 0;
             lblUsername.Text = "Nazwa użytkownika:";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(50, 188);
+            lblPassword.Location = new Point(84, 140);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(50, 20);
+            lblPassword.Size = new Size(40, 15);
             lblPassword.TabIndex = 4;
             lblPassword.Text = "Hasło:";
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(50, 125);
+            lblEmail.Location = new Point(84, 93);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(49, 20);
+            lblEmail.Size = new Size(39, 15);
             lblEmail.TabIndex = 2;
             lblEmail.Text = "Email:";
             // 
             // lblPasswordRepeat
             // 
             lblPasswordRepeat.AutoSize = true;
-            lblPasswordRepeat.Location = new Point(50, 225);
+            lblPasswordRepeat.Location = new Point(84, 168);
             lblPasswordRepeat.Name = "lblPasswordRepeat";
-            lblPasswordRepeat.Size = new Size(104, 20);
+            lblPasswordRepeat.Size = new Size(84, 15);
             lblPasswordRepeat.TabIndex = 5;
             lblPasswordRepeat.Text = "Powtórz hasło:";
             // 
             // RegisterForm
             // 
             AcceptButton = btnSubmit;
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(450, 375);
+            ClientSize = new Size(464, 281);
             Controls.Add(lblUsername);
             Controls.Add(txtUsername);
             Controls.Add(lblEmail);
@@ -143,7 +137,7 @@
             Controls.Add(txtPassword2);
             Controls.Add(btnSubmit);
             Controls.Add(btnBack);
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "RegisterForm";
             Text = "Rejestracja";
             ResumeLayout(false);

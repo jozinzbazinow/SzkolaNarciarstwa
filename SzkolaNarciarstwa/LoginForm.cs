@@ -4,6 +4,9 @@ using MySql.Data.MySqlClient;
 using System.Text;
 using System.Security.Cryptography;
 using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+using Mysqlx.Crud;
+using Moq;
+using NUnit.Framework;
 
 namespace SzkolaNarciarstwa
 {
@@ -13,7 +16,12 @@ namespace SzkolaNarciarstwa
         private string connectionString = "server=localhost;database=szkola;uid=root;"; // Zmień na odpowiednie dane
         private int typUzytkownika;
         private Form stronaGlowna;
-
+        public string QuickHash(string input)
+        {
+            var inputBytes = Encoding.UTF8.GetBytes(input);
+            var inputHash = SHA256.HashData(inputBytes);
+            return Convert.ToHexString(inputHash);
+        }
         public LoginForm(Form mainForm, int typUzytkownika)
         {
             InitializeComponent();
@@ -37,13 +45,6 @@ namespace SzkolaNarciarstwa
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            string QuickHash(string input)
-            {
-                var inputBytes = Encoding.UTF8.GetBytes(input);
-                var inputHash = SHA256.HashData(inputBytes);
-                return Convert.ToHexString(inputHash);
-            }
-
             password = QuickHash(password);
             int wynikLogowania = ValidateLogin(username, password);
             if (wynikLogowania >= 0)
@@ -149,7 +150,6 @@ namespace SzkolaNarciarstwa
                 stronaGlowna.Show();
             }
         }
-
         private void lblPassword_Click(object sender, EventArgs e)
         {
 

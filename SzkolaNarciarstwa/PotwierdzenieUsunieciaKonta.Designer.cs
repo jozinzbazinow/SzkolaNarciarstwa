@@ -60,16 +60,16 @@
             // 
             // btnPotwierdz
             // 
-            btnPotwierdz.BackColor = Color.FromArgb(192, 0, 0);
+            btnPotwierdz.BackColor = Color.Maroon;
             btnPotwierdz.Cursor = Cursors.Hand;
             btnPotwierdz.Dock = DockStyle.Top;
             btnPotwierdz.FlatAppearance.BorderSize = 0;
-            btnPotwierdz.FlatStyle = FlatStyle.Flat;
+            btnPotwierdz.FlatStyle = FlatStyle.Popup;
             btnPotwierdz.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
             btnPotwierdz.ForeColor = Color.Transparent;
-            btnPotwierdz.Location = new Point(0, 0);
+            btnPotwierdz.Location = new Point(5, 5);
             btnPotwierdz.Name = "btnPotwierdz";
-            btnPotwierdz.Size = new Size(211, 58);
+            btnPotwierdz.Size = new Size(201, 58);
             btnPotwierdz.TabIndex = 3;
             btnPotwierdz.Text = "Potwierdź usunięcie konta";
             btnPotwierdz.UseVisualStyleBackColor = false;
@@ -94,6 +94,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
+            panel1.Padding = new Padding(5);
             panel1.Size = new Size(211, 468);
             panel1.TabIndex = 18;
             // 
@@ -105,13 +106,13 @@
             button1.Cursor = Cursors.Hand;
             button1.Dock = DockStyle.Top;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(0, 58);
+            button1.Location = new Point(5, 63);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(211, 58);
+            button1.Size = new Size(201, 58);
             button1.TabIndex = 12;
             button1.Text = "Powrót";
             button1.UseVisualStyleBackColor = false;

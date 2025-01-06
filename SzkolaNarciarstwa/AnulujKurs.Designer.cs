@@ -53,16 +53,16 @@
             // btnAnulujKurs
             // 
             btnAnulujKurs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAnulujKurs.BackColor = Color.FromArgb(48, 46, 100);
+            btnAnulujKurs.BackColor = Color.SeaGreen;
             btnAnulujKurs.Cursor = Cursors.Hand;
             btnAnulujKurs.Dock = DockStyle.Top;
             btnAnulujKurs.FlatAppearance.BorderSize = 0;
-            btnAnulujKurs.FlatStyle = FlatStyle.Flat;
+            btnAnulujKurs.FlatStyle = FlatStyle.Popup;
             btnAnulujKurs.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
             btnAnulujKurs.ForeColor = Color.Transparent;
-            btnAnulujKurs.Location = new Point(0, 0);
+            btnAnulujKurs.Location = new Point(5, 5);
             btnAnulujKurs.Name = "btnAnulujKurs";
-            btnAnulujKurs.Size = new Size(211, 71);
+            btnAnulujKurs.Size = new Size(201, 58);
             btnAnulujKurs.TabIndex = 1;
             btnAnulujKurs.Text = "Anuluj wybrany kurs";
             btnAnulujKurs.UseVisualStyleBackColor = false;
@@ -85,23 +85,24 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
+            panel1.Padding = new Padding(5);
             panel1.Size = new Size(211, 468);
             panel1.TabIndex = 17;
             // 
             // button1
             // 
             button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.BackColor = Color.FromArgb(48, 46, 100);
+            button1.BackColor = Color.Maroon;
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.Cursor = Cursors.Hand;
             button1.Dock = DockStyle.Top;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(0, 71);
+            button1.Location = new Point(5, 63);
             button1.Name = "button1";
-            button1.Size = new Size(211, 58);
+            button1.Size = new Size(201, 58);
             button1.TabIndex = 4;
             button1.Text = "Powrót";
             button1.UseVisualStyleBackColor = false;

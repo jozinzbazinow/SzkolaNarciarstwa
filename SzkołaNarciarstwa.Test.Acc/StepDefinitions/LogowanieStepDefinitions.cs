@@ -27,7 +27,12 @@ namespace SzkolaNarciarstwa.Test.Acc.StepDefinitions
                 loginForm.TxtUsername.Text += "testuser";
                 loginForm.TxtPassword.Text += "password123";
             }
-         }
+            catch (Exception ex)
+            {
+                // Handle exception or log it
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         [When("Nacisne przycisk \"([^\"]*)\" sie")]
         public void WhenNacisnePrzyciskZalogujSie(string buttonName) //Error drag and drop, nie zmienia nic 

@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace SzkolaNarciarstwa
@@ -9,8 +8,6 @@ namespace SzkolaNarciarstwa
         [STAThread]
         static void Main()
         {
-            int stanowisko;
-            int ID;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -22,8 +19,9 @@ namespace SzkolaNarciarstwa
 
             // Tworzenie formularza logowania i przekazanie odniesienia do StronaGlowna
             LoginForm loginForm = new LoginForm(stronaGlowna, 0);
-            Application.Run(new StronaGlowna());
+            Application.Run(stronaGlowna);
         }
+
         public static class GlobalVariables
         {
             public static int stanowisko;

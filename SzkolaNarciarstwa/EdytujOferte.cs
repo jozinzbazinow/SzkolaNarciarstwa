@@ -7,15 +7,14 @@ namespace SzkolaNarciarstwa
 {
     public partial class EdytujOferte : Form
     {
-
-        private PanelUzytkownika panelUzytkownika;
+        private Form mainForm;
+        private Form panelUzytkownika;
         private string connectionString = "server=localhost;database=szkola;uid=root;"; // Ustaw swoje dane połączenia z BD
 
         public EdytujOferte(PanelUzytkownika panelUzytkownika)
         {
             InitializeComponent();
             this.panelUzytkownika = panelUzytkownika;
-            WyswietlEdytujOferte();
         }
 
         private void WyswietlEdytujOferte()
@@ -31,23 +30,18 @@ namespace SzkolaNarciarstwa
 
         private void btnDodajKurs_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            DodajKurs dodajKurs = new DodajKurs(this);
-            dodajKurs.Show();
+            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(DodajKurs), this);
         }
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            UsunKurs usunKurs = new UsunKurs(this);
-            usunKurs.Show();
+            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(DodajKurs), this);
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            EdytujCene edytujCene = new EdytujCene(this);
-            edytujCene.Show();
+            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(EdytujCene), this);
         }
     }
 }

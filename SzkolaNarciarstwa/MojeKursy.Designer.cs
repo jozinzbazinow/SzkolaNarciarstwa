@@ -33,10 +33,10 @@
             listBoxCourses = new ListBox();
             panel2 = new Panel();
             panel1 = new Panel();
+            button1 = new Button();
             panel3 = new Panel();
             panel5 = new Panel();
             label2 = new Label();
-            button1 = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
@@ -83,8 +83,28 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
+            panel1.Padding = new Padding(5);
             panel1.Size = new Size(211, 468);
             panel1.TabIndex = 18;
+            // 
+            // button1
+            // 
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.BackColor = Color.FromArgb(48, 46, 100);
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
+            button1.ForeColor = Color.Transparent;
+            button1.Location = new Point(5, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(201, 58);
+            button1.TabIndex = 5;
+            button1.Text = "Powrót";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel3
             // 
@@ -119,25 +139,6 @@
             label2.TabIndex = 0;
             label2.Text = "MOJE KURSY";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.BackColor = Color.FromArgb(48, 46, 100);
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft YaHei", 11.25F, FontStyle.Bold);
-            button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(211, 58);
-            button1.TabIndex = 5;
-            button1.Text = "Powrót";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // MojeKursy
             // 
