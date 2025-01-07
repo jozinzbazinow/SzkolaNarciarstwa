@@ -62,7 +62,7 @@ namespace SzkolaNarciarstwa
             }
         }
 
-        private int ValidateLogin(string username, string password)
+        public int ValidateLogin(string username, string password)  //Zmienić na  private po testach
         {
             try
             {

@@ -41,7 +41,7 @@ namespace SzkolaNarciarstwa
             this.Hide();
             mainForm.Show();
         }
-        private bool ValidateRegister(string username, string password1, string password2, string email)
+        public bool ValidateRegister(string username, string password1, string password2, string email)     //zmienic na private po testach
         {
             // Walidacja danych
             if (string.IsNullOrWhiteSpace(username) ||
