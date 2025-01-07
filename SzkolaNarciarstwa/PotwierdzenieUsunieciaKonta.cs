@@ -18,9 +18,6 @@ namespace SzkolaNarciarstwa
             this.loginForm = loginForm;
             btnPotwierdz.Click += BtnPotwierdz_Click;
         }
-                       /* Dla testów zmienne */
-        public TextBox TxtPassword => txtHaslo;
-        public Button BtnPotwierdz => btnPotwierdz;
         private void UsunKonto(MySqlConnection connection)
         {
 
@@ -52,7 +49,7 @@ namespace SzkolaNarciarstwa
             this.Close();
         }
 
-        public void BtnPotwierdz_Click(object sender, EventArgs e)
+        private void BtnPotwierdz_Click(object sender, EventArgs e)
         {
             {
                 string wprowadzoneHaslo = txtHaslo.Text.Trim();
