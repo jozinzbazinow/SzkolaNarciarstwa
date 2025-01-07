@@ -78,7 +78,7 @@ namespace SzkolaNarciarstwa
             }
         }
 
-        private void LoadTerminy(int kursId, int pracownikId)
+        public int LoadTerminy(int kursId, int pracownikId)
         {
             cmbTerminy.Items.Clear();
             using (var connection = new MySqlConnection(connectionString))
@@ -110,13 +110,21 @@ namespace SzkolaNarciarstwa
                     if (cmbTerminy.Items.Count == 0)
                     {
                         MessageBox.Show("Brak dostępnych terminów dla wybranego kursu.");
+                        return 1;
+                    }
+                    if (cmbTerminy.Items.Count > 0)
+                    {
+                        MessageBox.Show("Są dostępne kursy.");
+                        return 1;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Błąd podczas ładowania terminów: " + ex.Message);
+                    return -1;
                 }
             }
+            return 0;
         }
 
 

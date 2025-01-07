@@ -71,6 +71,23 @@ namespace SzkolaNarciarstwa.Tests
             Assert.That(result, Is.GreaterThanOrEqualTo(0));
             Console.WriteLine("Uruchomiono test DodajTerminTest");
         }
+        [Test]
+        public void WczytanieTerminowTest()
+        {
+            // Arrange
+            var faktycznyPanel = new PanelUzytkownika(new Mock<Form>().Object); // Użycie rzeczywistej klasy zamiast mocka
+            var zapisNaKurs = new ZapisNaKurs(faktycznyPanel);
+
+            int idInstruktor = 5;
+            int idKursRodzaj = 1;   // Id dostępnego kursu (1), dla testu z niepowodzeniem zmienić na (0)
+
+            // Act
+            int result = zapisNaKurs.LoadTerminy(idKursRodzaj, idInstruktor);
+
+            // Assert
+            Assert.That(result, Is.GreaterThanOrEqualTo(0));
+            Console.WriteLine("Uruchomiono test DodajTerminTest");
+        }
 
     }
 }
