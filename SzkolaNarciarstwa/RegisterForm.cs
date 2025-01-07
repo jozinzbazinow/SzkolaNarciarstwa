@@ -41,7 +41,7 @@ namespace SzkolaNarciarstwa
             this.Hide();
             mainForm.Show();
         }
-        public bool ValidateRegister(string username, string password1, string password2, string email)     //zmienic na private po testach
+        public int ValidateRegister(string username, string password1, string password2, string email)     //zmienic na private po testach
         {
             // Walidacja danych
             if (string.IsNullOrWhiteSpace(username) ||
@@ -50,106 +50,28 @@ namespace SzkolaNarciarstwa
                 string.IsNullOrWhiteSpace(email) )
             {
                 MessageBox.Show("Wprowadź wszystkie dane!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Czyszczenie pól
-                txtUsername.Clear();
-                txtPassword1.Clear();
-                txtPassword2.Clear();
-                txtEmail.Clear();
+                return -1;
             }
             else if (password1 != password2)
             {
                 MessageBox.Show("Hasła nie są identyczne!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Czyszczenie pól
-                txtUsername.Clear();
-                txtPassword1.Clear();
-                txtPassword2.Clear();
-                txtEmail.Clear();
+                return -1;
             }
             else if (password1.Length < 8 || password1.Length > 64)
             {
                 MessageBox.Show("Hasło powinno zawierać od 8 do 64 znaków!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Czyszczenie pól
-                txtUsername.Clear();
-                txtPassword1.Clear();
-                txtPassword2.Clear();
-                txtEmail.Clear();
+                return -1;
             }
             else if (!IsValidEmail(email))
             {
                 MessageBox.Show("Nieprawidłowy adres e-mail!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Czyszczenie pól
-                txtUsername.Clear();
-                txtPassword1.Clear();
-                txtPassword2.Clear();
-                txtEmail.Clear();
+                return -1;
             }
             
             else
             {
-                string QuickHash(string input)
-                {
-                    var inputBytes = Encoding.UTF8.GetBytes(input);
-                    var inputHash = SHA256.HashData(inputBytes);
-                    return Convert.ToHexString(inputHash);
-                }
-
-                password1 = QuickHash(password1);
-                try
-                {
-                    using (MySqlConnection connection = new MySqlConnection(connectionString))
-                    {
-                        connection.Open();
-                        // Sprawdzenie unikalności numeru telefonu i e-maila
-                        string checkQuery = "SELECT COUNT(*) FROM kursanci WHERE Login = @username";
-                        using (var checkCmd = new MySqlCommand(checkQuery, connection))
-                        {
-                            checkCmd.Parameters.AddWithValue("@username", username );
-                            
-
-                            int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                            if (count > 0)
-                            {
-                                MessageBox.Show("Istnieje już użytkownik o takim loginie!.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return false;
-                            }
-                        }
-                        string query = "INSERT INTO `kursanci` (`Email`, `Login`, `Haslo`) VALUES (@email, @username, @password);\n";
-                        if (query == null)
-                        {
-                            MessageBox.Show("Coś poszło nie tak.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }
-
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@username", username);
-                            command.Parameters.AddWithValue("@password", password1);
-                            command.Parameters.AddWithValue("@email", email);
-
-                            int rowsAffected = command.ExecuteNonQuery();
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show($"Rejestracja zakończona sukcesem.\nLogin: {username}\nHasło (hash): {password1}", "Debug", MessageBoxButtons.OK);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Błąd MySQL: {ex.Message}\n{ex.StackTrace}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                // Przekierowanie do logowania
-                this.Hide();
-                LoginForm loginForm = new LoginForm(mainForm, 1);
-                loginForm.Show();
-                return true;    
+                return 0;
             }
-            return true;
         }
         private bool IsValidEmail(string email)
         {

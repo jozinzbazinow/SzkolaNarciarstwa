@@ -3,11 +3,12 @@ using Moq;
 using SzkolaNarciarstwa;
 using System;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MySqlX.XDevAPI.Common;
 
 namespace SzkolaNarciarstwa.Tests
 {
     [TestFixture]
-    public class LoginFormTest2
+    public class TestyJednostkowe
     {
         [SetUp]
         public void Setup() { 
@@ -32,8 +33,8 @@ namespace SzkolaNarciarstwa.Tests
             string password1 = "ProsteHaslo";
             string password2 = "ProsteHaslo";
             string email = "przyklad@email.pl";
-            bool result = registerForm.ValidateRegister(username, password1, password2, email);
-            Assert.That(result, Is.True);
+            int result = registerForm.ValidateRegister(username, password1, password2, email);
+            Assert.That(result, Is.GreaterThanOrEqualTo(0));
         }
         [Test]
         public void QuickHash_ShouldGenerateCorrectHash()
@@ -50,5 +51,26 @@ namespace SzkolaNarciarstwa.Tests
             Assert.That(expectedHash, Is.EqualTo(hash));
             Console.WriteLine("Uruchomiono test QuickHash");
         }
+        [Test]
+        public void DodajTerminTest()
+        {
+            // Arrange
+            var mockPanel = new Mock<IPanelUzytkownika>();
+            var utworzTermin = new UtworzTermin(mockPanel.Object);
+            DateTime dataRozpoczecia = new DateTime(2026, 6, 20);
+            DateTime dataZakonczenia = new DateTime(2026, 5, 20); // Korekta daty powinna być zrobiona
+            string iloscGodzin1 = "15";
+            string iloscMiejsc1 = "15";
+            var idInstruktor = 5;
+            var idKursRodzaj = 1;
+
+            // Act
+            int result = utworzTermin.UtworzTerminExec(dataRozpoczecia, dataZakonczenia, iloscGodzin1, iloscMiejsc1, idInstruktor, idKursRodzaj);
+
+            // Assert
+            Assert.That(result, Is.GreaterThanOrEqualTo(0));
+            Console.WriteLine("Uruchomiono test DodajTerminTest");
+        }
+
     }
 }

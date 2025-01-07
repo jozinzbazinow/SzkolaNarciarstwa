@@ -14,14 +14,13 @@ namespace SzkolaNarciarstwa
 {
     public partial class UtworzTermin : Form
     {
+        private IPanelUzytkownika _panelUzytkownika;
         private PanelUzytkownika PanelUzytkownika;
         private string connectionString = "server=localhost;database=szkola;uid=root;password=;"; // Ustaw dane połączenia
-        public UtworzTermin(PanelUzytkownika PanelUzytkownika)
+        public UtworzTermin(IPanelUzytkownika panelUzytkownika)
         {
             InitializeComponent();
-            this.PanelUzytkownika = PanelUzytkownika;
-            this.Load += new EventHandler(UtworzTermin_Load);
-
+            _panelUzytkownika = panelUzytkownika;
         }
         private void UtworzTermin_Load(object sender, EventArgs e)
         {
@@ -96,6 +95,57 @@ namespace SzkolaNarciarstwa
                 }
             }
         }
+        public int UtworzTerminExec(DateTime dataRozpoczecia, DateTime dataZakonczenia, string iloscGodzin1, string iloscMiejsc1, int idInstruktor, int idKursRodzaj)
+        {
+
+            if (idInstruktor == null || idKursRodzaj == null || iloscGodzin1 == null || iloscMiejsc1 == null)
+            {
+                MessageBox.Show("Uzupełnij wszystkie pola w formularzu!");
+                return -1;
+            }
+
+            if (!int.TryParse(iloscGodzin1, out int iloscGodzin))
+            {
+                MessageBox.Show("Proszę wprowadzić poprawną liczbę w polu Ilośc Godzin!.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+            if (iloscGodzin < 1 || iloscGodzin > 100)
+            {
+                MessageBox.Show("Niepoprawna liczba godzin. Powinna ona wynosić od 1 do 100!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+            if (!int.TryParse(iloscMiejsc1, out int iloscMiejsc))
+            {
+                MessageBox.Show("Proszę wprowadzić poprawną liczbę w polu Ilośc Godzin!.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+            if (iloscMiejsc != 15)
+            {
+                MessageBox.Show("Liczba uczestników kursu powinna wynosić 15 kursantów!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+            if (dataRozpoczecia < DateTime.Now.Date)
+            {
+                MessageBox.Show("Data rozpoczęcia kursu nie może być w przeszłości!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+
+
+            if ((dataZakonczenia - dataRozpoczecia).TotalDays > 365)
+            {
+                MessageBox.Show("Kurs nie może trwać dłużej niż 1 rok!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+            else
+            {
+                MessageBox.Show("Termin został dodany!");
+                return 0;
+            }
+        }
 
         private void btnPowrot_Click(object sender, EventArgs e)
         {
@@ -115,81 +165,7 @@ namespace SzkolaNarciarstwa
             var iloscMiejsc1 = txtIloscMiejsc.Text;
             var idInstruktor = (cmbInstruktor.SelectedItem as dynamic)?.ID;
             var idKursRodzaj = (cmbNazwaKursu.SelectedItem as dynamic)?.ID;
-
-            if (idInstruktor == null || idKursRodzaj == null || iloscGodzin1 == null || iloscMiejsc1 == null)
-            {
-                MessageBox.Show("Uzupełnij wszystkie pola w formularzu!");
-                return;
-            }
-
-            if (!int.TryParse(iloscGodzin1, out int iloscGodzin))
-            {
-                MessageBox.Show("Proszę wprowadzić poprawną liczbę w polu Ilośc Godzin!.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (iloscGodzin < 1 || iloscGodzin > 100)
-            {
-                MessageBox.Show("Niepoprawna liczba godzin. Powinna ona wynosić od 1 do 100!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!int.TryParse(iloscMiejsc1, out int iloscMiejsc))
-            {
-                MessageBox.Show("Proszę wprowadzić poprawną liczbę w polu Ilośc Godzin!.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (iloscMiejsc != 15)
-            {
-                MessageBox.Show("Liczba uczestników kursu powinna wynosić 15 kursantów!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (dataRozpoczecia < DateTime.Now.Date)
-            {
-                MessageBox.Show("Data rozpoczęcia kursu nie może być w przeszłości!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            
-            if ((dataZakonczenia - dataRozpoczecia).TotalDays > 365)
-            {
-                MessageBox.Show("Kurs nie może trwać dłużej niż 1 rok!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string query = "INSERT INTO kursyTerminy (DataRozpoczecia, DataZakonczenia, IloscGodzin, IloscMiejsc, IDPracownik, IDKursRodzaj) " +
-                                   "VALUES (@DataRozpoczecia, @DataZakonczenia, @IloscGodzin, @IloscMiejsc, @IDPracownik, @IDKursRodzaj)";
-                    var command = new MySqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@DataRozpoczecia", dataRozpoczecia);
-                    command.Parameters.AddWithValue("@DataZakonczenia", dataZakonczenia);
-                    command.Parameters.AddWithValue("@IloscGodzin", iloscGodzin);
-                    command.Parameters.AddWithValue("@IloscMiejsc", iloscMiejsc);
-                    command.Parameters.AddWithValue("@IDPracownik", idInstruktor);
-                    command.Parameters.AddWithValue("@IDKursRodzaj", idKursRodzaj);
-
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Termin został dodany!");
-                        this.Close();
-                        PanelUzytkownika.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nie udało się dodać terminu.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Błąd podczas dodawania terminu: " + ex.Message);
-                }
-            }
+            UtworzTerminExec(dataRozpoczecia, dataZakonczenia, iloscGodzin1, iloscMiejsc1, idInstruktor, idKursRodzaj);
         }
 
         private void dateTerminKursu_ValueChanged(object sender, EventArgs e)

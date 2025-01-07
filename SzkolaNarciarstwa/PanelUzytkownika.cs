@@ -14,7 +14,11 @@ using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
 
 namespace SzkolaNarciarstwa
 {
-    public partial class PanelUzytkownika : Form
+    public interface IPanelUzytkownika
+    {
+        void Show();
+    }
+    public partial class PanelUzytkownika : Form, IPanelUzytkownika
     {
         private Form mainForm;
         public PanelUzytkownika(Form mainForm)
