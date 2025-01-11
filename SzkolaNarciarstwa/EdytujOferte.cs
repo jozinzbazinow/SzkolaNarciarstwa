@@ -35,7 +35,7 @@ namespace SzkolaNarciarstwa
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(DodajKurs), this);
+            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(UsunKurs), this);
 
         }
 

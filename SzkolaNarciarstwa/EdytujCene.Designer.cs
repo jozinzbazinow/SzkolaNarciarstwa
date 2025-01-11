@@ -75,6 +75,7 @@
             btnCenaEdit.TabIndex = 9;
             btnCenaEdit.Text = "Zmień cenę";
             btnCenaEdit.UseVisualStyleBackColor = false;
+            btnCenaEdit.Click += btnCenaEdit_Click_1;
             // 
             // btnAnuluj
             // 

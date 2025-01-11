@@ -51,7 +51,7 @@ namespace SzkolaNarciarstwa
             }
         }
 
-        public void btnCenaEdit_Click(object sender, EventArgs e)
+        public void btnCenaEdit_Click_1(object sender, EventArgs e)
         {
             if (dgvKursy.SelectedRows.Count != 1)
             {
@@ -69,8 +69,8 @@ namespace SzkolaNarciarstwa
             {
                 MessageBox.Show("Nie wprowadzono nowej ceny lub anulowano operacje", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; // Anulowanie
-                
-                
+
+
             }
 
             if (!int.TryParse(newPrice, out int cena))
@@ -138,7 +138,7 @@ namespace SzkolaNarciarstwa
                     priceForm.Close();
                     this.Close();
                     edytujOferte.Show();
-                    
+
                 }
 
                 if (result == DialogResult.OK)

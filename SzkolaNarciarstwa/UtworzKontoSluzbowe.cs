@@ -18,8 +18,8 @@ namespace SzkolaNarciarstwa
             this.zarzadzajUzytkownikami = zarzadzajUzytkownikami;
         }
 
-        
-        
+
+
 
         private string GenerateRandomPassword()
         {
@@ -34,17 +34,16 @@ namespace SzkolaNarciarstwa
             return new string(password);
         }
 
-        private void btnPowrot_Click(object sender, EventArgs e)
+        private void btnPowrot_Click_1(object sender, EventArgs e)
         {
             var wynik = MessageBox.Show("Czy na pewno chcesz anulować zmiany?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (wynik == DialogResult.Yes)
             {
                 this.Close();
-                zarzadzajUzytkownikami.Show();
             }
         }
 
-        private void BtnUtworzKonto_Click_1(object sender, EventArgs e)
+        private void BtnUtworzKonto_Click(object sender, EventArgs e)
         {
             {
                 // Pobranie danych z formularza
@@ -95,7 +94,7 @@ namespace SzkolaNarciarstwa
                 }
 
                 string haslo = GenerateRandomPassword();
-                
+
 
                 using (var connection = new MySqlConnection(connectionString))
                 {
@@ -163,6 +162,16 @@ namespace SzkolaNarciarstwa
             {
                 return false;
             }
+        }
+
+        private void txtLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

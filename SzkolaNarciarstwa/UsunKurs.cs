@@ -57,7 +57,7 @@ namespace SzkolaNarciarstwa
         }
 
 
-        private void btnUsun_Click_1(object sender, EventArgs e)
+        private void btnUsun_Click(object sender, EventArgs e)
         {
             if (dgvKursy.SelectedRows.Count != 1)
             {
@@ -65,7 +65,7 @@ namespace SzkolaNarciarstwa
                 return;
             }
 
-         
+
             using (var connection = new MySqlConnection(connectionString))
             {
                 try
@@ -95,7 +95,7 @@ namespace SzkolaNarciarstwa
                     MessageBox.Show($"Wystąpił błąd podczas usuwania: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
         }
     }
 }
