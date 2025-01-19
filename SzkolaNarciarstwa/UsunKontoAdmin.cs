@@ -54,13 +54,13 @@ namespace SzkolaNarciarstwa
                 }
             }
         }
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnBack_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             zarzadzajUzytkownikami.Show();
         }
 
-        private void btnUsun_Click(object sender, EventArgs e)
+        private void btnUsun_Click_1(object sender, EventArgs e)
         {
             if (dgvUzytkownicy.SelectedRows.Count == 0)
             {
