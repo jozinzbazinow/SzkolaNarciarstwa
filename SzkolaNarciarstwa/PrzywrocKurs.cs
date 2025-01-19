@@ -10,13 +10,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SzkolaNarciarstwa
 {
-    public partial class UsunKurs : Form
+    public partial class PrzywrocKurs : Form
     {
 
         private EdytujOferte edytujOferte;
         private string connectionString = "server=localhost;database=szkola;uid=root;"; // Ustaw swoje dane połączenia
 
-        public UsunKurs(EdytujOferte edytujOferte)
+        public PrzywrocKurs(EdytujOferte edytujOferte)
         {
             InitializeComponent();
             this.edytujOferte = edytujOferte;
@@ -32,7 +32,7 @@ namespace SzkolaNarciarstwa
                     connection.Open();
 
                     // Pobieranie danych z tabeli kursyrodzaje
-                    string query = @"SELECT IDKursRodzaj AS ID, Nazwa, Opis, Cena, Zaawansowanie FROM kursyrodzaje WHERE aktualne = 1";
+                    string query = @"SELECT IDKursRodzaj AS ID, Nazwa, Opis, Cena, Zaawansowanie FROM kursyrodzaje where aktualne = 0";
 
                     var adapter = new MySqlDataAdapter(query, connection);
                     var dataTable = new DataTable();
@@ -77,7 +77,7 @@ namespace SzkolaNarciarstwa
                         int id = Convert.ToInt32(row.Cells["ID"].Value);
 
 
-                        string deleteQuery = "UPDATE kursyrodzaje SET aktualne = 0 WHERE IDKursRodzaj = @ID";
+                        string deleteQuery = "UPDATE kursyrodzaje SET aktualne = 1 WHERE IDKursRodzaj = @ID";
 
                         using (var command = new MySqlCommand(deleteQuery, connection))
                         {
@@ -86,7 +86,7 @@ namespace SzkolaNarciarstwa
                         }
                     }
 
-                    MessageBox.Show("Zaznaczone kurs został pomyślnie usunięty.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Zaznaczone kurs został pomyślnie przywrócony.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     edytujOferte.Show();
                 }
@@ -95,6 +95,11 @@ namespace SzkolaNarciarstwa
                     MessageBox.Show($"Wystąpił błąd podczas usuwania: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+        }
+
+        private void dgvKursy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

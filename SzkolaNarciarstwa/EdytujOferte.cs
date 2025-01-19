@@ -43,5 +43,10 @@ namespace SzkolaNarciarstwa
         {
             ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(EdytujCene), this);
         }
+
+        private void btnPrzywroc_Click(object sender, EventArgs e)
+        {
+            ((PanelUzytkownika)panelUzytkownika).ShowChildForm(typeof(PrzywrocKurs), this);
+        }
     }
 }

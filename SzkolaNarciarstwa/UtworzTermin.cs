@@ -78,7 +78,7 @@ namespace SzkolaNarciarstwa
                 try
                 {
                     connection.Open();
-                    string query = "SELECT IDKursRodzaj, Nazwa FROM kursyrodzaje";
+                    string query = "SELECT IDKursRodzaj, Nazwa FROM kursyrodzaje where aktualne = 1";
                     var command = new MySqlCommand(query, connection);
                     var reader = command.ExecuteReader();
                     while (reader.Read())

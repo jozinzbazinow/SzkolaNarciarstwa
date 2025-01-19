@@ -36,6 +36,7 @@
             label2 = new Label();
             panel1 = new Panel();
             btnBack = new Button();
+            btnPrzywroc = new Button();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -65,7 +66,7 @@
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.None;
-            btnEdit.Location = new Point(325, 315);
+            btnEdit.Location = new Point(325, 389);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(144, 51);
             btnEdit.TabIndex = 3;
@@ -132,11 +133,23 @@
             btnBack.Text = "Anuluj";
             btnBack.UseVisualStyleBackColor = false;
             // 
+            // btnPrzywroc
+            // 
+            btnPrzywroc.Anchor = AnchorStyles.None;
+            btnPrzywroc.Location = new Point(325, 318);
+            btnPrzywroc.Name = "btnPrzywroc";
+            btnPrzywroc.Size = new Size(144, 51);
+            btnPrzywroc.TabIndex = 21;
+            btnPrzywroc.Text = "Przywróć kurs";
+            btnPrzywroc.UseVisualStyleBackColor = true;
+            btnPrzywroc.Click += btnPrzywroc_Click;
+            // 
             // EdytujOferte
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 468);
+            Controls.Add(btnPrzywroc);
             Controls.Add(panel5);
             Controls.Add(panel1);
             Controls.Add(panel2);
@@ -162,5 +175,6 @@
         private Label label2;
         private Panel panel1;
         private Button btnBack;
+        private Button btnPrzywroc;
     }
 }
