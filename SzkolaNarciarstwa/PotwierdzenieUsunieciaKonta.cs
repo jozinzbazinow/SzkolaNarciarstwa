@@ -74,9 +74,7 @@ namespace SzkolaNarciarstwa
                         if (wynik == 1) // Hasło poprawne
                         {
                             UsunKonto(connection);
-                            loginForm = new LoginForm(null, 1); // Tworzenie instancji LoginForm
-                            this.Close();
-                            loginForm.Show(); // Wyświetlenie panelu logowania
+                            RestartApplication();
                         }
                         else
                         {
@@ -89,6 +87,11 @@ namespace SzkolaNarciarstwa
                     MessageBox.Show($"Wystąpił błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void RestartApplication()
+        {
+            Application.Restart();
+            Environment.Exit(0);
         }
     }
 }
