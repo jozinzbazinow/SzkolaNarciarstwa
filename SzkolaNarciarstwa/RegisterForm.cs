@@ -17,20 +17,20 @@ namespace SzkolaNarciarstwa
             this.mainForm = mainForm;
 
             // Podłącz zdarzenia przycisków
-            btnSubmit.Click += BtnSubmit_Click;
-            btnBack.Click += BtnBack_Click;
+            btnSubmit.Click += BtnSubmit_Click_1;
+            btnBack.Click += BtnBack_Click_1;
         }
-        private void BtnSubmit_Click(object sender, EventArgs e)
+        private void BtnSubmit_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password1 = txtPassword1.Text;
             string password2 = txtPassword2.Text;
             string email = txtEmail.Text;
             //  zapis do bazy danych
-            ValidateRegister( username,  password1, password2,  email);
+            ValidateRegister(username, password1, password2, email);
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click_1(object sender, EventArgs e)
         {
             // Powrót do głównego okna
             this.Hide();
@@ -42,7 +42,7 @@ namespace SzkolaNarciarstwa
             if (string.IsNullOrWhiteSpace(username) ||
                 string.IsNullOrWhiteSpace(password1) ||
                 string.IsNullOrWhiteSpace(password2) ||
-                string.IsNullOrWhiteSpace(email) )
+                string.IsNullOrWhiteSpace(email))
             {
                 MessageBox.Show("Wprowadź wszystkie dane!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -82,7 +82,7 @@ namespace SzkolaNarciarstwa
                 txtPassword2.Clear();
                 txtEmail.Clear();
             }
-            
+
             else
             {
                 string QuickHash(string input)
@@ -102,8 +102,8 @@ namespace SzkolaNarciarstwa
                         string checkQuery = "SELECT COUNT(*) FROM kursanci WHERE Login = @username";
                         using (var checkCmd = new MySqlCommand(checkQuery, connection))
                         {
-                            checkCmd.Parameters.AddWithValue("@username", username );
-                            
+                            checkCmd.Parameters.AddWithValue("@username", username);
+
 
                             int count = Convert.ToInt32(checkCmd.ExecuteScalar());
                             if (count > 0)
@@ -142,7 +142,7 @@ namespace SzkolaNarciarstwa
                 this.Hide();
                 LoginForm loginForm = new LoginForm(mainForm, 1);
                 loginForm.Show();
-                return true;    
+                return true;
             }
             return true;
         }

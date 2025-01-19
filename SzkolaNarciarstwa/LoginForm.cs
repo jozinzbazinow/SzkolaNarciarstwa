@@ -34,11 +34,11 @@ namespace SzkolaNarciarstwa
             }
 
             // Podłącz zdarzenia przycisków
-            btnSubmit.Click += BtnSubmit_Click;
-            btnBack.Click += BtnBack_Click;
+            btnSubmit.Click += BtnSubmit_Click_1;
+            btnBack.Click += BtnBack_Click_1;
         }
 
-        private void BtnSubmit_Click(object sender, EventArgs e)
+        private void BtnSubmit_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
@@ -133,7 +133,7 @@ namespace SzkolaNarciarstwa
 
 
 
-        private void BtnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click_1(object sender, EventArgs e)
         {
             this.Hide();
 

@@ -32,11 +32,7 @@ namespace SzkolaNarciarstwa
                 }
 
                 MessageBox.Show("Konto zostało pomyślnie usunięte.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Zamknięcie aplikacji lub przekierowanie do panelu logowania
-                LoginForm loginForm = new LoginForm(null, 1); // Tworzenie instancji LoginForm
-                this.Close();
-                loginForm.Show(); // Wyświetlenie panelu logowania
+                
             }
             catch (Exception ex)
             {
@@ -51,46 +47,46 @@ namespace SzkolaNarciarstwa
 
         private void BtnPotwierdz_Click(object sender, EventArgs e)
         {
+            string wprowadzoneHaslo = txtHaslo.Text.Trim();
+            string QuickHash(string input)
             {
-                string wprowadzoneHaslo = txtHaslo.Text.Trim();
-                string QuickHash(string input)
-                {
-                    var inputBytes = Encoding.UTF8.GetBytes(input);
-                    var inputHash = SHA256.HashData(inputBytes);
-                    return Convert.ToHexString(inputHash);
-                }
+                var inputBytes = Encoding.UTF8.GetBytes(input);
+                var inputHash = SHA256.HashData(inputBytes);
+                return Convert.ToHexString(inputHash);
+            }
 
-                wprowadzoneHaslo = QuickHash(wprowadzoneHaslo);
+            wprowadzoneHaslo = QuickHash(wprowadzoneHaslo);
 
-                // Weryfikacja hasła
-                using (var connection = new MySqlConnection(connectionString))
+            // Weryfikacja hasła
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                try
                 {
-                    try
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM kursanci WHERE IDKursanci = @ID AND Haslo = @Haslo";
+                    using (var command = new MySqlCommand(query, connection))
                     {
-                        connection.Open();
-                        string query = "SELECT COUNT(*) FROM kursanci WHERE IDKursanci = @ID AND Haslo = @Haslo";
-                        using (var command = new MySqlCommand(query, connection))
+                        command.Parameters.AddWithValue("@ID", Program.GlobalVariables.ID);
+                        command.Parameters.AddWithValue("@Haslo", wprowadzoneHaslo);
+
+                        int wynik = Convert.ToInt32(command.ExecuteScalar());
+
+                        if (wynik == 1) // Hasło poprawne
                         {
-                            command.Parameters.AddWithValue("@ID", Program.GlobalVariables.ID);
-                            command.Parameters.AddWithValue("@Haslo", wprowadzoneHaslo);
-
-                            int wynik = Convert.ToInt32(command.ExecuteScalar());
-
-                            if (wynik == 1) // Hasło poprawne
-                            {
-
-                                UsunKonto(connection);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Podane hasło jest niepoprawne.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            UsunKonto(connection);
+                            loginForm = new LoginForm(null, 1); // Tworzenie instancji LoginForm
+                            this.Close();
+                            loginForm.Show(); // Wyświetlenie panelu logowania
+                        }
+                        else
+                        {
+                            MessageBox.Show("Podane hasło jest niepoprawne.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
